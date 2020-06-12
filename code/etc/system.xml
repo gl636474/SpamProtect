@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Spam Protect 2 Magento extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is copyright Gareth Ladd 2020. Not for public dissemination
+ * nor use.
+ *
+ * DISCLAIMER
+ *
+ * This program is private software. It comes without any warranty, to
+ * the extent permitted by applicable law. You may not copy, modify nor
+ * distribute it. The author takes no responsibility for any consequences of
+ * unauthorised usage of this file or any part thereof.
+ */
+ -->
+
+<config>
+    <sections>
+        <web>
+            <groups>
+            <!-- module: the (_Data) helper to use for translations -->
+                <spamprotect translate="label" module="gareth_naturescupboard2">
+                    <label>Spam Protection</label>
+                    <sort_order>300</sort_order>
+                    <show_in_store>1</show_in_store>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <frontend_type>text</frontend_type>
+                    <fields>
+                        <!-- Custom, "table-like" configuration field -->
+                        <disallowed_strings translate="label">
+                            <label>Disallowed strings</label>
+                            <sort_order>10</sort_order>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <!-- Specific backend class to handle serialized data -->
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <!-- Specific frontend class to render custom field -->
+                            <frontend_model>gareth_spamprotect/adminhtml_form_field_disallowedStringsTable</frontend_model>
+                            <comment>If nothing specified, defaults to "http://" and "https://"</comment>
+                        </disallowed_strings>
+                        <max_string_length>
+                            <label>Maximum length for firstname, etc.</label>
+                            <sort_order>20</sort_order>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <comment>Empty or values less than 10 mean no length checking</comment>
+                        </max_string_length>
+                    </fields>
+                </spamprotect>
+            </groups>
+        </web>
+    </sections>
+</config>

@@ -1,0 +1,13 @@
+# modman installation file for SpamProtect
+
+code                    app/code/local/Gareth/SpamProtect
+Gareth_SpamProtect.xml  app/etc/modules/Gareth_SpamProtect.xml
+
+# Clear all caches
+@shell rm -rf "$PROJECT/var/cache"
+@shell rm -rf "$PROJECT/var/session"
+
+# DO NOT USE "$PROJECT/mage clear-cache"
+# It will screw up Magento - don't know why
+#
+@shell php "$MODULE/flush_cache.php" --mage-dir="$PROJECT"

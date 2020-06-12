@@ -1,0 +1,50 @@
+<config>
+  <modules>
+    <Gareth_SpamProtect>
+      <version>1.0.0</version>
+    </Gareth_SpamProtect>
+  </modules>
+  <global>
+    <helpers>
+      <!-- Helpers identifier for this module. Used in Mage::getHelper(). Text after 
+        the identifier-slash is taken as a filename. -->
+      <gareth_spamprotect>
+        <class>Gareth_SpamProtect_Helper</class>
+      </gareth_spamprotect>
+    </helpers>
+    <blocks>
+      <!-- Blocks identifier for this module -->
+      <gareth_spamprotect>
+        <!-- Prefix for all Block class names, used in Mage::createBlock(). Specifically 
+          so Magento can load the system.xml <disallowed_strings>/<frontend_model>. Text after 
+          the identifier-slash is taken as a underscore separated filepath (capitalised, no 
+          extension). -->
+        <class>Gareth_SpamProtect_Block</class>
+      </gareth_spamprotect>
+    </blocks>
+  </global>
+  <frontend>
+    <routers>
+      <customer>
+        <args>
+          <modules>
+            <!-- Override controllers classes matching the before attribute with 
+              similarly named controllers from the Gareth_NaturesCupboard2 with class names matching 
+              the element content -->
+            <Gareth_SpamProtect before="Mage_Customer">Gareth_SpamProtect</Gareth_SpamProtect>
+          </modules>
+        </args>
+      </customer>
+    </routers>
+  </frontend>
+  <default>
+    <web>
+      <spamprotect>
+        <!-- Magento bug: does not load defaults for serialized array type
+             See AccountController::createPostAction() for defaults. -->
+        <disallowed_strings></disallowed_strings>
+        <max_string_length>100</max_string_length>
+      </spamprotect>
+    </web>
+  </default>
+</config>
